@@ -1,0 +1,45 @@
+{% extends "base_lost.html" %}
+
+{% block title %}
+{{ block.super }} - {{ post.name }}
+{% endblock %}
+
+{% block breadcrumb %}
+  <a href="{% url 'posts' %}" class="breadcrumb">Posts</a>
+  <a href="#" class="breadcrumb">{{ post.name }}</a>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="section">
+    {% if post.created_by == user %}
+    <div class="row">
+      <div class="col s6">
+        <a href="{% url 'post_update' post.pk %}" class="waves-effect waves-light btn"><i class="material-icons right">create</i>Edit {{ post.name }}</a>
+      </div>
+    </div>
+    {% endif %}
+    <div class="row">
+      <div class="col s6 m6">
+        <div class="card">
+          <div class="card-image">
+            <img src="{{ post.image.url }}">
+          </div>
+        </div>
+      </div>
+      <div class="col s6 m6">
+        <ul class="collection with-header">
+          <li class="collection-header"><h4>{{ post.name }}</h4></li>
+          <li class="collection-item"><span class="title">Object type:</span> {{ post.type_of_object }}</li>
+          <li class="collection-item"><span class="title">Description:</span> {{ post.description }}</li>
+          <li class="collection-item"><span class="title">Location Found:</span> {{ post.location_found }}</li>
+          <li class="collection-item"><span class="title">Pickup Details:</span> {{ post.pickup_details }}</li>
+          <li class="collection-item"><span class="title">Date Posted:</span> {{ post.posted_at }}</li>
+          <li class="collection-item"><span class="title">Posted by:</span> {{ post.created_by }}</li>
+          <li class="collection-item"><span class="title">Status:</span> {{ post.status }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

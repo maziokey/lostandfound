@@ -1,0 +1,43 @@
+{% extends "base_accounts.html" %}
+{% load materializecss %}
+
+{% block title %}
+{{ block.super }} - Log In
+{% endblock %}
+
+{% block breadcrumb %}
+  <a href="#" class="breadcrumb">Login</a>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <p>
+              <span class="card-title center-align">Login</span>
+            </p>
+            <form method="POST" novalidate>
+              {% csrf_token %}
+              <div class="row">
+                {{ form.username|materializecss:'s6' }}
+                {{ form.password|materializecss:'s6' }}
+              </div>
+              <div class="row right-align">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Log In
+                  <i class="material-icons right">send</i>
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="card-action">
+            <span>Forgot your Password? <a href="{% url 'password_reset' %}" class="waves-effect waves-light btn-small">Reset</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends "base_lost.html" %}
+{% load static %}
+
+{% block title %}
+{{ block.super }} - About
+{% endblock %}
+
+{% block breadcrumb %}
+  <a href="#" class="breadcrumb">About</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h4 class="header col s12 light">Welcome to lost + found. A haven for lost items.</h4>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"> <img src="{% static "imgs/background3.jpg" %}" alt="Unsplashed background img 3"> </div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+
+      <div class="row">
+        <div class="col s12 center">
+          <h3><i class="mdi-content-send brown-text"></i></h3>
+          <h4>About L + F</h4>
+          <p class="left-align light">Lost and Found is a haven for lost objects. Users can post objects which they found and the owners can contact the users to pick up the lost object. All you need is a picture of the lost object and a short description of the object, where you found it and where you want the owner to come and pick it up. Users have to find a way to verify the the lost object belongs to the rightful owner if contacted. So what are you waiting for? sign up and join the L + F family.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h4 class="header col s12 light">Lost a valuable item? Search our database of lost items. Your's might just be a click away.</h4>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="{% static "imgs/background2.jpg" %}" alt="Unsplashed background img 2"></div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
+            <h5 class="center">Post a lost Item</h5>
+
+            <p class="light">Give a simple description of the object, where you found it and how the owner can pick it up.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
+            <h5 class="center">Locate lost objects</h5>
+
+            <p class="light">Users can search our database for items which they have lost. If found, you'll find instructions on how to pick up the lost items.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
+            <h5 class="center">Easy to work with</h5>
+
+            <p class="light">We have provided detailed documentation as well as specific examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about L + F.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

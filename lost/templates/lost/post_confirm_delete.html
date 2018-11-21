@@ -1,0 +1,47 @@
+{% extends "base_lost.html" %}
+
+{% block title %}
+{{ block.super }} - Delete Post
+{% endblock %}
+
+{% block breadcrumb %}
+  <a href="{% url 'posts' %}" class="breadcrumb">Posts</a>
+  <a href="{% url 'post_detail' post.pk %}" class="breadcrumb">{{ post.name }}</a>
+  <a href="#" class="breadcrumb">Delete</a>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <div class="col s12">
+        <p>
+          Are you sure you want to delete this post?
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s6">
+        <div class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="{{ post.image.url }}">
+          </div>
+          <div class="card-content">
+            <span class="card-title grey-text text-darken-4">{{ post.name }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <form action="" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <button class="btn waves-effect waves-light" type="submit" name="action">Delete
+            <i class="material-icons right">send</i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

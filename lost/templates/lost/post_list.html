@@ -1,0 +1,69 @@
+{% extends "base_lost.html" %}
+
+{% block title %}
+{{ block.super }} - Posts
+{% endblock %}
+
+{% block breadcrumb %}
+  <a href="{% url 'posts' %}" class="breadcrumb">Posts</a>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <div class="col s6">
+        <a href="{% url 'post_create' %}" class="waves-effect waves-light btn"><i class="material-icons right">create</i>Create Post</a>
+      </div>
+    </div>
+    <div class="row">
+      {% if post_list %}
+        {% for post in post_list %}
+      <div class="col s4">
+        <div class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="{{ post.image.url }}" height="400" width="450">
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">{{ post.name }}<i class="material-icons right">more_vert</i></span>
+            <p><a href="{{ post.get_absolute_url }}">Details</a></p>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">{{ post.name }}<i class="material-icons right">close</i></span>
+            <p>{{ post.description }}</p>
+          </div>
+        </div>
+      </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <div class="row">
+      <div class="col s6">
+        {% if is_paginated %}
+          <ul class="pagination">
+            {% if page_obj.has_previous %}
+              <li class="waves-effect"><a href="?page={{ page_obj.previous_page_number }}"><i class="material-icons">chevron_left</i></a></li>
+            {% else %}
+              <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+            {% endif %}
+
+            {% for page_num in paginator.page_range %}
+              {% if page_obj.num == page_num %}
+                <li class="active"><a href="?page={{ page_num }}">{{ page_num }}</a></li>
+              {% else %}
+                <li class="waves-effect"><a href="?page={{ page_num }}">{{ page_num }}</a></li>
+              {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+              <li class="waves-effect"><a href="?page={{ page_obj.next_page_number }}"><i class="material-icons">chevron_right</i></a></li>
+            {% else %}
+              <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+            {% endif %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
